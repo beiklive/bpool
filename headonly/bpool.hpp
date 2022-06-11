@@ -23,9 +23,6 @@ public:
 };
 
 
-
-#include "bpool.h"
-
 bpool::bpool(int num_threads) : stop(false)
 {
     for (int i = 0; i < num_threads; i++)
