@@ -16,8 +16,8 @@ bpool::bpool(int num_threads) : stop(false)
                     task = tasks.front();
                     tasks.pop();
                 }
-            }
                 task();
+            }
         });
     }
 }
