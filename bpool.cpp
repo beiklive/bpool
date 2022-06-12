@@ -16,8 +16,8 @@ bpool::bpool(int num_threads) : stop(false)
                     task = tasks.front();
                     tasks.pop();
                 }
-                task();
             }
+                task();
         });
     }
 }
@@ -47,4 +47,13 @@ bpool::~bpool()
         {
             t.join();
         }
+}
+
+void bpool::set_stop()
+{
+    {
+        std::unique_lock<std::mutex> lock(tasks_mtx);
+        stop = true;
+    }
+    cv.notify_all();
 }

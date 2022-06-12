@@ -20,11 +20,9 @@ private:
 public:
     bpool(int num_threads);
     ~bpool();
-
     void add_task(std::function<void()> task);
+    void set_stop();
 };
-
-
 
 
 
